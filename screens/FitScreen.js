@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  Pressable,
-} from "react-native";
+import { StyleSheet, Text, SafeAreaView, Image, Pressable } from "react-native";
 import React, { useContext, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { FitnessItems } from "../context/Context";

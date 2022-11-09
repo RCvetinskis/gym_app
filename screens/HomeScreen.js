@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import React, { useContext } from "react";
 import FitnessCards from "../components/FitnessCards";
 import { FitnessItems } from "../context/Context";
@@ -13,12 +6,12 @@ import { FitnessItems } from "../context/Context";
 const HomeScreen = () => {
   const { workout, minutes, calories } = useContext(FitnessItems);
   return (
-    <ScrollView style={{ marginTop: 50, backgroundColor: "white" }}>
+    <ScrollView style={{ marginTop: 30, backgroundColor: "white" }}>
       <View
         style={{
           backgroundColor: "#264653",
-          padding: "10px",
-          height: "200px",
+          padding: 10,
+          height: 200,
           width: "100%",
         }}
       >
@@ -55,6 +48,7 @@ const HomeScreen = () => {
             <Text style={[styles.setTrakingNameStyle]}>MINS</Text>
           </View>
         </View>
+
         {/* image style */}
         <View
           style={{
@@ -74,8 +68,8 @@ const HomeScreen = () => {
             }}
           />
         </View>
-        <FitnessCards />
       </View>
+      <FitnessCards />
     </ScrollView>
   );
 };
@@ -93,6 +87,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginTop: 6,
     color: "#e9c46a",
-    fontWeight: 500,
+    fontWeight: "bold",
   },
 });

@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "gym_app",
-    "slug": "gym_app",
+    "name": "Gym Killer",
+    "slug": "gym-killer",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/gym.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/gym.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.robertas.cvetinskis.gym_app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8eba9015-dc68-4338-bd18-e3ff1a6e94c9"
+      }
     }
   }
 }

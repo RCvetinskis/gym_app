@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import { StyleSheet, Text, SafeAreaView, Image } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -32,7 +32,7 @@ const RestScreen = () => {
         style={{
           color: "#264653",
           fontSize: 30,
-          fontWeight: 900,
+          fontWeight: "bold",
           marginTop: 50,
           textAlign: "center",
         }}
@@ -43,7 +43,7 @@ const RestScreen = () => {
         style={{
           color: "#264653",
           fontSize: 40,
-          fontWeight: 800,
+          fontWeight: "bold",
           marginTop: 50,
           textAlign: "center",
         }}

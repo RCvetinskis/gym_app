@@ -97,7 +97,7 @@ const WorkoutScreen = () => {
             textAlign: "center",
             color: "#e9c46a",
             fontSize: 15,
-            fontWeight: 600,
+            fontWeight: "normal",
           }}
         >
           Start

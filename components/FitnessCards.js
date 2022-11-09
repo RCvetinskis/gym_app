@@ -7,7 +7,7 @@ const FitnessCards = () => {
   const fitnessData = fitness;
   const navigation = useNavigation();
   return (
-    <View>
+    <View style={{ marginTop: 50 }}>
       {fitnessData.map((item) => (
         <Pressable
           onPress={() =>
