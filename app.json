@@ -7,7 +7,7 @@
     "icon": "./assets/gym.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/gym.png",
+      "image": "./assets/gymBg.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

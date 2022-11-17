@@ -6,7 +6,7 @@ import { FitnessItems } from "../context/Context";
 const HomeScreen = () => {
   const { workout, minutes, calories } = useContext(FitnessItems);
   return (
-    <ScrollView style={{ marginTop: 30, backgroundColor: "white" }}>
+    <ScrollView style={{ backgroundColor: "white" }}>
       <View
         style={{
           backgroundColor: "#264653",

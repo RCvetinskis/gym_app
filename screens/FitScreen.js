@@ -25,7 +25,7 @@ const FitScreen = () => {
   return (
     <SafeAreaView>
       <Image
-        style={{ width: "100%", height: 370 }}
+        style={{ width: "100%", height: 350 }}
         source={{ uri: currentExercise.image }}
       />
       <Text
@@ -121,7 +121,7 @@ const FitScreen = () => {
           alignItems: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: 50,
+          marginTop: 30,
         }}
       >
         <Pressable
