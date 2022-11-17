@@ -9,12 +9,12 @@ import {
 import React, { useContext } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
-import { FitnessItems } from "../context/Context";
+import { UserContext } from "../context/Context";
 const WorkoutScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   //   context states
-  const { completed, setCompleted } = useContext(FitnessItems);
+  const { completed, setCompleted } = useContext(UserContext);
   return (
     <>
       <ScrollView

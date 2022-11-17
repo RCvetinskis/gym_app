@@ -1,7 +1,7 @@
 import { StyleSheet, Text, SafeAreaView, Image, Pressable } from "react-native";
 import React, { useContext, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { FitnessItems } from "../context/Context";
+import { UserContext } from "../context/Context";
 
 const FitScreen = () => {
   const route = useRoute();
@@ -20,8 +20,8 @@ const FitScreen = () => {
     setMinutes,
     calories,
     setCalories,
-  } = useContext(FitnessItems);
-  console.log(completed);
+  } = useContext(UserContext);
+
   return (
     <SafeAreaView>
       <Image

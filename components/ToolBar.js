@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   AntDesign,
@@ -14,10 +14,15 @@ import {
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
+import { UserContext } from "../context/Context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ToolBar = () => {
   const [currentTab, setCurrentTab] = useState("Home");
   const navigation = useNavigation();
+  const { state, dispatch } = useContext(UserContext);
+  const { user } = state;
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -34,7 +39,7 @@ const ToolBar = () => {
             borderRadius: 10,
           }}
           source={{
-            uri: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
+            uri: user.avatar,
           }}
         ></Image>
         <Text
@@ -45,7 +50,7 @@ const ToolBar = () => {
             marginTop: 20,
           }}
         >
-          Robertas Cvetinskis
+          {user.username}
         </Text>
         <TouchableOpacity>
           <Text
@@ -89,7 +94,8 @@ const ToolBar = () => {
             setCurrentTab,
             "LogOut",
             logoutImage(),
-            navigation
+            navigation,
+            dispatch
           )}
         </View>
       </View>
@@ -99,12 +105,22 @@ const ToolBar = () => {
 
 export default ToolBar;
 // for multiple buttons...
-const TabButton = (currentTab, setCurrentTab, title, image, navigation) => {
+const TabButton = (
+  currentTab,
+  setCurrentTab,
+  title,
+  image,
+  navigation,
+  dispatch
+) => {
   return (
     <TouchableOpacity
       onPress={() => {
         if (title == "LogOut") {
-          // logout
+          removeStorage();
+          dispatch({ type: "FETCH_SUCCESS", payload: null });
+
+          // navigation.navigate("SignUp");
         } else {
           setCurrentTab(title);
           navigation.navigate(title);
@@ -139,8 +155,17 @@ const TabButton = (currentTab, setCurrentTab, title, image, navigation) => {
   );
 };
 
-// images
+// removes local storage and sets state of user
+const removeStorage = async () => {
+  try {
+    await AsyncStorage.removeItem("userData");
+    return true;
+  } catch (exception) {
+    return false;
+  }
+};
 
+// images
 const homeImage = () => {
   return <AntDesign name="home" size={25} color="#e9c46a" />;
 };

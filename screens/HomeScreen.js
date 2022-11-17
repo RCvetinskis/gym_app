@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import React, { useContext } from "react";
 import FitnessCards from "../components/FitnessCards";
-import { FitnessItems } from "../context/Context";
+import { UserContext } from "../context/Context";
 
 const HomeScreen = () => {
-  const { workout, minutes, calories } = useContext(FitnessItems);
+  const { workout, minutes, calories } = useContext(UserContext);
   return (
     <ScrollView style={{ backgroundColor: "white" }}>
       <View

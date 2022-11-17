@@ -1,9 +1,4 @@
-import {
-  StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
-  Animated,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, Animated } from "react-native";
 import React from "react";
 import { EvilIcons, AntDesign } from "@expo/vector-icons";
 
@@ -17,7 +12,7 @@ const BurgerMenu = ({
   return (
     <Animated.View
       style={{
-        padding: 15,
+        padding: 25,
         marginBottom: 3,
         transform: [
           {

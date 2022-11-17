@@ -7,17 +7,20 @@ import {
   TextInput,
   Pressable,
 } from "react-native";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import GymBg from "../assets/gymBg.png";
 import { UserContext } from "../context/Context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import ErrorMsg from "../components/ErrorMsg";
+import { useNavigation } from "@react-navigation/native";
 const LoginScreen = () => {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   // context dipsatch
   const { state, dispatch } = useContext(UserContext);
-  const { error, user } = state;
+  const { error } = state;
+  const navigation = useNavigation();
   const API = "http://192.168.68.107:4848/login";
   const onSubmit = async () => {
     const userValue = {
@@ -35,16 +38,17 @@ const LoginScreen = () => {
         body: JSON.stringify(userValue),
       });
       const data = await response.json();
+
       if (data.error) {
         dispatch({ type: "FETCH_FAIL", payload: data.message });
       } else {
-        navigation.navigate("Home");
         dispatch({ type: "FETCH_FAIL", payload: "" });
         dispatch({ type: "FETCH_SUCCESS", payload: data.data });
-        await AsyncStorage.setItem("user", data.user);
+        await AsyncStorage.setItem("userData", JSON.stringify(data.data));
+        navigation.navigate("Home");
       }
     } catch (err) {
-      dispatch({ type: "FETCH_FAIL", payload: err });
+      console.log(err);
     }
   };
 
@@ -79,6 +83,7 @@ const LoginScreen = () => {
 
         <View>
           <TextInput
+            secureTextEntry={true}
             style={styles.input}
             onChangeText={(value) => {
               setPassword(value);
@@ -88,7 +93,8 @@ const LoginScreen = () => {
           />
         </View>
       </View>
-
+      {/* error msg */}
+      <ErrorMsg error={error} />
       <Pressable
         disabled={password.length <= 0 || userName.length <= 0}
         onPress={onSubmit}

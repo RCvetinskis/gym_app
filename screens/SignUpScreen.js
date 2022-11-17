@@ -8,14 +8,14 @@ import {
   Image,
 } from "react-native";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Picker } from "@react-native-picker/picker";
 import GymBg from "../assets/gymBg.png";
-import postRequest from "../utils/postRequest";
 import { UserContext } from "../context/Context";
 import { useNavigation } from "@react-navigation/native";
 import ErrorMsg from "../components/ErrorMsg";
 import { MaterialIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const SignUpScreen = () => {
   // input refs
   const [userName, setUsername] = useState("");
@@ -24,8 +24,9 @@ const SignUpScreen = () => {
   const [gender, setGender] = useState("Male");
 
   // reducer context
+
   const { state, dispatch } = useContext(UserContext);
-  const { error } = state;
+  const { error, user } = state;
 
   const API = "http://192.168.68.107:4848/signup";
   const navigation = useNavigation();
@@ -57,8 +58,16 @@ const SignUpScreen = () => {
       dispatch({ type: "FETCH_FAIL", payload: err });
     }
   };
+  // const remove = async () => {
+  //   try {
+  //     await AsyncStorage.removeItem("userData");
+  //     return true;
+  //   } catch (exception) {
+  //     return false;
+  //   }
+  // };
+  // remove();
 
-  //  todo: displaye error message make login user set user to state context
   return (
     <SafeAreaView style={styles.container}>
       <View>
